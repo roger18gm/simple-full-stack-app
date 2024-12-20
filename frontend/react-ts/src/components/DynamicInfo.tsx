@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "axios"; // Used for HTTP requests to APIs
 
 const DynamicInfo = () => {
     const [dbInfo, setDbInfo] = useState<{
@@ -9,7 +9,11 @@ const DynamicInfo = () => {
         favorite_food?: string;
         birth_place?: string;
     }>({});
+
+    // State for when the form is open and in editing mode
     const [isEditing, setIsEditing] = useState(false);
+
+    // Form field values that will be editable
     const [formData, setFormData] = useState({
         name: "",
         hobby: "",
@@ -17,12 +21,17 @@ const DynamicInfo = () => {
         birth_place: "",
     });
 
+    // Called when user clicks on image
     const fetchDatabaseInfo = async () => {
         try {
+            // Get route from backend
             const response = await axios.get(
                 "http://localhost:8080/awesome/applicant/db"
             );
+            // Since the response is an array of clients (records), grab the first one
             setDbInfo(response.data[0]);
+
+            // Place the database record information into the editable form fields
             setFormData({
                 name: response.data[0].name || "",
                 hobby: response.data[0].hobby || "",
@@ -33,7 +42,7 @@ const DynamicInfo = () => {
             console.error("Error fetching the API data:", error);
         }
     };
-
+    // Changes the values of the input field as it is edited
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -41,12 +50,13 @@ const DynamicInfo = () => {
 
     const handleUpdate = async () => {
         try {
+            // Send the updated values to route and database
             await axios.post("http://localhost:8080/awesome/applicant/db", {
                 id: dbInfo.id,
                 ...formData,
             });
             setIsEditing(false); // Exit editing mode
-            fetchDatabaseInfo(); // Refresh data
+            fetchDatabaseInfo(); // Refresh data with new values
         } catch (error) {
             console.error("Error updating the API data:", error);
         }
@@ -64,6 +74,7 @@ const DynamicInfo = () => {
                 onClick={fetchDatabaseInfo}
             />
             <div className="person-text-box">
+                {/* Database values are displayed when the user hasn't clicked on Edit */}
                 {dbInfo.name && !isEditing && (
                     <div>
                         <h2>{dbInfo.name}</h2>
@@ -76,13 +87,18 @@ const DynamicInfo = () => {
                         <p>
                             <strong>Hometown:</strong> {dbInfo.birth_place}
                         </p>
+
+                        {/* Enters editing mode and displays the edit form */}
                         <button className="edit" onClick={() => setIsEditing(true)}>Edit</button>
                     </div>
                 )}
+
+                {/* Edit form for a user to update database values  */}
                 {isEditing && (
                     <form
                         style={{ marginTop: "20px" }}
                         onSubmit={(e) => {
+                            // Stops page refresh on submit and pushes update to backend
                             e.preventDefault();
                             handleUpdate();
                         }}

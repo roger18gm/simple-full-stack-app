@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "axios"; // Used for HTTP requests to APIs
 
 const StaticInfo = () => {
     const [info, setInfo] = useState<{
@@ -9,11 +9,14 @@ const StaticInfo = () => {
         birthPlace?: string;
     }>({});
 
+    // Called when user clicks on the image
     const fetchInfo = async () => {
         try {
+            // Access route from backend
             const response = await axios.get(
                 "http://localhost:8080/awesome/applicant"
             );
+            // Place those values into info object
             setInfo(response.data);
         } catch (error) {
             console.error("Error fetching the API data:", error);
@@ -25,7 +28,7 @@ const StaticInfo = () => {
           <p>Click on my photo to learn more about me!</p>
 
             <img
-                src="/rogerWaterfall.jpg" // Replace with the path to your picture
+                src="/rogerWaterfall.jpg"
                 alt="Picture of myself"
                 onClick={fetchInfo}
             />

@@ -21,7 +21,7 @@ describe("App Routes", () => {
 
   test("GET /awesome/applicant should return hardcoded info", async () => {
     const response = await request(app).get("/awesome/applicant");
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(200); // Success Response
     expect(response.body).toEqual({
       name: "Roger Galan-Manzano",
       hobby: "There are many things that I like to do and some vary on the season, but I really enjoy playing video games and playing volleyball!",
@@ -41,8 +41,8 @@ describe("App Routes", () => {
   
     expect(mockDbPool.query).toHaveBeenCalledTimes(1);
     expect(mockDbPool.query).toHaveBeenCalledWith('SELECT * FROM person_info WHERE id = 1');
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual([
+    expect(response.status).toBe(200); // Success Response
+    expect(response.body).toEqual([ //  toEqual and not toBe
       { id: 1, name: "Mock Name", hobby: "Mock Hobby", favorite_food: "Mock Food", birth_place: "Mock Place" },
     ]);
   });
@@ -55,14 +55,17 @@ describe("App Routes", () => {
     const response = await request(app).get("/awesome/applicant/db");
   
     expect(mockDbPool.query).toHaveBeenCalledTimes(1);
-    expect(response.status).toBe(500);
+    expect(response.status).toBe(500); // Internal server error
     expect(response.text).toBe("Error querying database");
   });
   
   
   test("GET /invalid-route should return 404", async () => {
     const response = await request(app).get("/invalid-route");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(404); // Page not found
   });
   
 });
+
+
+// Test for the post request
