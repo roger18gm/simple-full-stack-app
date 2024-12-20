@@ -21,14 +21,15 @@ const StaticInfo = () => {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <div className="person-box">
+          <p>Click on my photo to learn more about me!</p>
+
             <img
                 src="/rogerWaterfall.jpg" // Replace with the path to your picture
                 alt="Picture of myself"
-                style={{ width: "200px", borderRadius: "5%", cursor: "pointer" }}
                 onClick={fetchInfo}
             />
-            <div style={{ marginTop: "20px" }}>
+            <div className="person-text-box">
                 {info.name && (
                     <div>
                         <h2>{info.name}</h2>

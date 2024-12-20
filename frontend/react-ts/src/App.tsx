@@ -1,14 +1,14 @@
 import DynamicInfo from './components/DynamicInfo';
 import StaticInfo from './components/StaticInfo';
+import "./App.css";
 
 function App() {
  
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div style={{ textAlign: "center"}}>
       <h1>My Info Page - Vivacity Tech Exercise</h1>
       
-      <p>static component below</p>
       {<StaticInfo />}
       {<DynamicInfo />}
     </div> 

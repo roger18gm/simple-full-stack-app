@@ -53,14 +53,17 @@ const DynamicInfo = () => {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <div className="person-box">
+            <p className="desc">Click on the panda to edit my info or update it with yours below!
+                Use the form below to change the values within the database. 
+                Press 'Save' to submit your response or 'Cancel' to exit.
+            </p>
             <img
                 src="/panda.png"
                 alt="Picture of myself"
-                style={{ width: "200px", borderRadius: "5%", cursor: "pointer" }}
                 onClick={fetchDatabaseInfo}
             />
-            <div style={{ marginTop: "20px" }}>
+            <div className="person-text-box">
                 {dbInfo.name && !isEditing && (
                     <div>
                         <h2>{dbInfo.name}</h2>
@@ -73,7 +76,7 @@ const DynamicInfo = () => {
                         <p>
                             <strong>Hometown:</strong> {dbInfo.birth_place}
                         </p>
-                        <button onClick={() => setIsEditing(true)}>Edit</button>
+                        <button className="edit" onClick={() => setIsEditing(true)}>Edit</button>
                     </div>
                 )}
                 {isEditing && (
@@ -84,53 +87,54 @@ const DynamicInfo = () => {
                             handleUpdate();
                         }}
                     >
-                        <div>
+                        <div className="label-input-box">
                             <label>
-                                Name:
+                                Name:  
+                                </label>
                                 <input
                                     type="text"
                                     name="name"
                                     value={formData.name}
                                     onChange={handleInputChange}
                                 />
-                            </label>
                         </div>
-                        <div>
+                        <div className="label-input-box">
                             <label>
                                 Hobby:
+                            </label>
                                 <input
                                     type="text"
                                     name="hobby"
                                     value={formData.hobby}
                                     onChange={handleInputChange}
                                 />
-                            </label>
                         </div>
-                        <div>
+                        <div className="label-input-box">
                             <label>
                                 Favorite Food:
+                            </label>
                                 <input
                                     type="text"
                                     name="favorite_food"
                                     value={formData.favorite_food}
                                     onChange={handleInputChange}
                                 />
-                            </label>
                         </div>
-                        <div>
+                        <div className="label-input-box">
                             <label>
                                 Birth Place:
+                            </label>
                                 <input
                                     type="text"
                                     name="birth_place"
                                     value={formData.birth_place}
                                     onChange={handleInputChange}
                                 />
-                            </label>
                         </div>
-                        <div>
-                            <button type="submit">Save</button>
+                        <div className="">
+                            <button className="save"type="submit">Save</button>
                             <button
+                                className="cancel"
                                 type="button"
                                 onClick={() => setIsEditing(false)}
                                 style={{ marginLeft: "10px" }}

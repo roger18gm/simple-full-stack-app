@@ -1,0 +1,78 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+    
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    margin:0 auto;
+}
+.desc {
+    font-size: 1.3rem;
+    margin: 20px 100px;
+}
+
+p {
+    font-size: 1.3rem;
+}
+.person-box { 
+    text-align: center; 
+    margin: 50px 300px; 
+    border: white 2px solid;  
+    border-radius: 10px;
+}
+img {
+    width: 400px;
+    border-radius: 5%;
+    cursor: pointer; 
+    transition: ease-in-out .2s;
+}
+img:hover {
+    opacity: .5;
+}
+.person-text-box{
+    margin:5% 15%;
+}
+.label-input-box {
+    width:100%;
+    text-align: left;
+}
+label {
+    font-size: 1.2rem;
+    display: block;
+}
+input {
+    margin: 10px 0px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    width:100%;
+    transition: ease-in-out .2s;
+}
+input:hover {
+    background-color:rgba(165, 159, 159, 0.87);
+}
+.edit, .save, .cancel {
+    margin: 20px;
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100px;
+    transition: ease-in-out .2s;
+}
+
+.edit:hover, .save:hover {
+    background-color: rgb(122, 198, 122);
+}
+.cancel:hover {
+    background-color: rgb(214, 56, 56);
+}
+
