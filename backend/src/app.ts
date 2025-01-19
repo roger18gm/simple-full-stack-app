@@ -9,8 +9,8 @@ export default function(dbPool:any) {
     const app = express();
 
     app.use(cors({
-        credentials: true,
-        origin: true
+        origin: "https://be6c38e3.simple-full-stack-app.pages.dev/",
+        credentials: true
     }));
 
     app.use(compression()); // Reduce the size of data

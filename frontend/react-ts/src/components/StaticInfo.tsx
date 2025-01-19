@@ -14,7 +14,7 @@ const StaticInfo = () => {
         try {
             // Access route from backend
             const response = await axios.get(
-                "http://localhost:8080/awesome/applicant"
+                `${import.meta.env.REACT_APP_API_URL}/awesome/applicant`
             );
             // Place those values into info object
             setInfo(response.data);
