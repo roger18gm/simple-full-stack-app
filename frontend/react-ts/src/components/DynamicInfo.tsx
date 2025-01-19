@@ -26,7 +26,7 @@ const DynamicInfo = () => {
         try {
             // Get route from backend
             const response = await axios.get(
-                `${import.meta.env.REACT_APP_API_URL}/awesome/applicant/db`
+                `https://simple-full-stack-app-e23i.onrender.com/awesome/applicant/db`
             );
             // Since the response is an array of clients (records), grab the first one
             setDbInfo(response.data[0]);
