@@ -51,7 +51,7 @@ const DynamicInfo = () => {
     const handleUpdate = async () => {
         try {
             // Send the updated values to route and database
-            await axios.post("http://localhost:8080/awesome/applicant/db", {
+            await axios.post(`https://simple-full-stack-app-e23i.onrender.com/awesome/applicant/db`, {
                 id: dbInfo.id,
                 ...formData,
             });
