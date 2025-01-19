@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div style={{ textAlign: "center"}}>
-      <h1>My Info Page - Vivacity Tech Exercise</h1>
+      <h1>PostgreSQL, Node/Express, React, Typescript Demo</h1>
         {<StaticInfo />}
         {<DynamicInfo />}
     </div> 
