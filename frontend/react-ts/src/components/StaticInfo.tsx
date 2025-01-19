@@ -14,7 +14,7 @@ const StaticInfo = () => {
         try {
             // Access route from backend
             const response = await axios.get(
-                `https://simple-full-stack-app-e23i.onrender.com/awesome/applicant/db`
+                `https://simple-full-stack-app-e23i.onrender.com/awesome/applicant`
             );
             // Place those values into info object
             setInfo(response.data);
