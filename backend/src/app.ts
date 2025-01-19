@@ -9,7 +9,7 @@ export default function(dbPool:any) {
     const app = express();
 
     app.use(cors({
-        origin: "https://be6c38e3.simple-full-stack-app.pages.dev/",
+        origin: "https://simple-full-stack-app.pages.dev/",
         credentials: true
     }));
 
